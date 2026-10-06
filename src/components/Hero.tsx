@@ -29,7 +29,10 @@ export function Hero() {
         </h1>
         <p className="mt-3 text-xl text-text-muted sm:text-2xl">
           {profile.role}
-          <span className="text-text-dim"> · {profile.location}</span>
+          <span className="block text-text-dim sm:inline">
+            <span className="hidden sm:inline"> · </span>
+            {profile.location}
+          </span>
         </p>
         <p className="mt-5 max-w-md text-base leading-relaxed text-text-muted">
           {profile.tagline}

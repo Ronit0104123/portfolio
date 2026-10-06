@@ -11,7 +11,7 @@ export function Projects() {
     <section id="projects" className="mx-auto max-w-5xl px-5 py-20 sm:py-28">
       <SectionHeading index="03" title="projects" />
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {featured.map((project, i) => (
           <Reveal key={project.slug} delay={i * 0.08}>
             <ProjectCard project={project} large />

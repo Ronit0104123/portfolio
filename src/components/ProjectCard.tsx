@@ -5,12 +5,6 @@ import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/content";
 import { GithubIcon } from "./icons";
 
-const statusMap: Record<string, { label: string; color: string }> = {
-  active: { label: "active", color: "text-ok" },
-  wip: { label: "in progress", color: "text-accent" },
-  archived: { label: "archived", color: "text-text-dim" },
-};
-
 export function ProjectCard({
   project,
   large = false,
@@ -19,7 +13,6 @@ export function ProjectCard({
   large?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const status = project.status ? statusMap[project.status] : null;
 
   function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = ref.current;
@@ -95,10 +88,7 @@ export function ProjectCard({
             </span>
           ))}
         </div>
-        <div className="flex items-center gap-2 font-mono text-[11px] text-text-dim">
-          {status && <span className={status.color}>● {status.label}</span>}
-          <span>{project.year}</span>
-        </div>
+        <span className="font-mono text-[11px] text-text-dim">{project.year}</span>
       </div>
     </div>
   );

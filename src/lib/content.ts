@@ -8,14 +8,14 @@ export const profile = {
   handle: "ronit",
   role: "Forward Deployed Engineer",
   tagline:
-    "Fullstack engineer building AI and LLM-powered products — currently deploying conversational AI at Gnani.ai.",
-  location: "India",
-  availability: "Building @ Gnani.ai",
+    "I build AI agents that hold real conversations: voice agents for banks and telcos at Gnani.ai, and RAG products on the side.",
+  location: "Bengaluru, India",
+  availability: "Building voice agents @ Gnani.ai",
   bio: [
-    "I'm a fullstack engineer who ended up specializing in AI and LLM-powered applications. I currently work as a Forward Deployed Engineer at Gnani.ai, a conversational AI company — I help deploy and customize their voice bots, speech recognition, and NLP automation directly for enterprise clients.",
-    "Outside of work I'm a third-year student at BITS Pilani, Goa Campus, and I spend my free time building things like Vouch (a credit score for developers' work history) and JustExecute (an AI research assistant for evaluating startup ideas) — usually powered by too much coffee and an unreasonable number of open tabs.",
+    "I'm a Forward Deployed Engineer at Gnani.ai, building voice agents for BFSI and telecom clients like Airtel and L&T Finance, plus Gnani Agent Studio, the internal platform used to configure them. Before that I built AI agents at 100x and was a Google Summer of Code 2025 contributor to the Internet Health Report.",
+    "I graduated from BITS Pilani, Goa with a B.E. in Electronics & Instrumentation. On the side I ship AI products end to end (RAG chatbots, a startup-validation engine, a credit score for engineers) and write about AI, startups, and software for 4,000+ followers on LinkedIn.",
   ],
-  resumeUrl: "#", // TODO: link to a hosted PDF resume, or remove the button in Hero.tsx
+  resumeUrl: "#", // TODO: drop your PDF in /public (e.g. public/resume.pdf) and set this to "/resume.pdf"
   sourceUrl: "https://github.com/Ronit0104123/portfolio",
 };
 
@@ -26,46 +26,24 @@ export const socials = {
   email: "ronitj0104@gmail.com",
 };
 
-export type Skill = { label: string; level?: "core" | "familiar" };
-export type SkillGroup = { category: string; items: Skill[] };
+export type SkillGroup = { category: string; items: string[] };
 
 export const skills: SkillGroup[] = [
   {
     category: "languages",
-    items: [
-      { label: "JavaScript", level: "core" },
-      { label: "TypeScript", level: "core" },
-      { label: "Python", level: "core" },
-      { label: "C++", level: "familiar" },
-      { label: "C", level: "familiar" },
-    ],
+    items: ["JavaScript", "Python", "C++", "SQL", "HTML", "CSS"],
   },
   {
-    category: "frontend",
-    items: [
-      { label: "React", level: "core" },
-      { label: "Next.js", level: "core" },
-      { label: "Vue.js", level: "familiar" },
-      { label: "Tailwind CSS", level: "core" },
-    ],
+    category: "ai / ml",
+    items: ["LangChain", "LangGraph", "RAG", "Embeddings", "Qdrant", "Prompt Engineering"],
   },
   {
-    category: "backend & data",
-    items: [
-      { label: "Node.js / Express", level: "core" },
-      { label: "MySQL", level: "core" },
-      { label: "Neo4j", level: "familiar" },
-      { label: "Supabase", level: "familiar" },
-    ],
+    category: "frameworks",
+    items: ["React.js", "Node.js", "Express.js", "Vue.js", "Tailwind CSS"],
   },
   {
-    category: "ai & tools",
-    items: [
-      { label: "LangChain / LangGraph", level: "core" },
-      { label: "OpenAI API", level: "core" },
-      { label: "Git", level: "core" },
-      { label: "Figma", level: "familiar" },
-    ],
+    category: "data & tools",
+    items: ["PostgreSQL", "Supabase", "Neo4j", "Firebase", "Git"],
   },
 ];
 
@@ -78,7 +56,6 @@ export type Project = {
   github?: string;
   live?: string;
   featured?: boolean;
-  status?: "active" | "archived" | "wip";
 };
 
 export const projects: Project[] = [
@@ -86,50 +63,33 @@ export const projects: Project[] = [
     slug: "vouch",
     name: "Vouch",
     description:
-      "A credit score for developers' work history — aggregates your real contributions into a single, verifiable trust signal.",
-    tags: ["TypeScript", "React", "Next.js"],
+      "A portable performance record, basically a credit score for engineers. Employers submit reviews, a Hermes agent turns the free text into a 6-dimension Vouch Score (0–100), and employees control who sees it and can reply.",
+    tags: ["React", "Convex", "Hermes Agent", "Dodo Payments"],
     year: "2026",
     github: "https://github.com/Ronit0104123/Vouch",
     live: "https://vouch-eta-ten.vercel.app",
     featured: true,
-    status: "active",
+  },
+  {
+    slug: "conversa",
+    name: "Conversa",
+    description:
+      "Multi-tenant RAG SaaS for lead generation. Paste a website URL and get an embeddable chatbot that answers visitors from your indexed content and captures leads. Crawled HTML, PDFs and DOCX go into pgvector, and the LangChain agent is covered by 12 unit tests against LLM failure modes.",
+    tags: ["FastAPI", "Next.js", "LangChain", "pgvector", "Supabase"],
+    year: "2026",
+    featured: true,
   },
   {
     slug: "justexecute",
     name: "JustExecute",
     description:
-      "A research assistant that evaluates startup ideas by gathering real-world evidence across market demand, competition, distribution channels, risk, and an execution roadmap.",
-    tags: ["React", "Express", "LangGraph", "Supabase", "OpenAI"],
-    year: "2026",
+      "Turns a one-sentence startup idea into a market-validation report and a 90-day GTM plan in under 2 minutes. A 5-stage LangGraph state machine runs parallel Tavily searches, and 6 custom retrieval tools ground every claim in Reddit and HN evidence.",
+    tags: ["LangGraph", "Groq", "Tavily", "Node.js", "Supabase"],
+    year: "2025",
     github: "https://github.com/Ronit0104123/startup-copilot",
     live: "https://startup-copilot-xi.vercel.app",
     featured: true,
-    status: "active",
   },
-  {
-    slug: "taskpilot",
-    name: "TaskPilot",
-    description:
-      "A multi-agent CLI that interprets vague requests and orchestrates their completion — intent parsing, clarification, planning, and execution across tasks like finding medicines or planning travel.",
-    tags: ["Python", "Multi-agent"],
-    year: "2026",
-    github: "https://github.com/Ronit0104123/taskpilot-cli",
-    featured: false,
-    status: "archived",
-  },
-  {
-    slug: "linkedin-clone",
-    name: "LinkedIn Clone",
-    description:
-      "A frontend + backend clone of LinkedIn's core feed and profile experience, built to practice full-stack fundamentals end to end.",
-    tags: ["JavaScript", "React"],
-    year: "2025",
-    github: "https://github.com/Ronit0104123/Linkedin-Clone",
-    featured: false,
-    status: "archived",
-  },
-  // Pulled live from https://github.com/Ronit0104123 — edit freely, or ask
-  // me to re-sync from GitHub whenever you ship something new.
 ];
 
 export type ExperienceEntry = {
@@ -145,15 +105,37 @@ export const experience: ExperienceEntry[] = [
   {
     org: "Gnani.ai",
     role: "Forward Deployed Engineer",
-    period: "Present",
-    location: "India",
+    period: "Jun 2026 — Present",
+    location: "Bengaluru, India",
     bullets: [
-      "Deploy and customize Gnani.ai's conversational AI stack — voice bots, speech recognition, and NLP automation — directly with enterprise clients.",
+      "Built Gnani Agent Studio, an internal platform for configuring BFSI voice agents. A structured QA flow captures requirements and generates system prompts modularly, per product type (personal loan, vehicle loan) and call-flow scenario (PTP, third-party collections), optimized for KV caching.",
+      "Matches requirements with embedding retrieval plus LLM confirmation (Azure OpenAI GPT-4o), on a FastAPI/MongoDB + React/TanStack stack.",
+      "Developed voice agents for Airtel (collections, DTH) and L&T Finance, with multi-language support and optimized API integrations and call pipelines.",
+      "Won 2nd prize among all FDEs in Gnani.ai's company-wide Agent Hackathon.",
     ],
-    tags: ["Conversational AI", "NLP", "Enterprise Deployment"],
+    tags: ["GPT-4o", "FastAPI", "MongoDB", "React", "TanStack"],
   },
-  // TODO: add a start date (e.g. "Jan 2026 — Present"), a second bullet with
-  // a concrete outcome, and any earlier roles or internships.
+  {
+    org: "100x",
+    role: "AI Agents Developer",
+    period: "Aug 2025 — Dec 2025",
+    location: "Bengaluru, India",
+    bullets: [
+      "Built AI agents for candidate sourcing (TrueSearch), NetSuite workflows, and QA/UAT testing, cutting manual testing effort by 80%.",
+      "JavaScript-based automation, tuned for reliability over long-running executions.",
+    ],
+    tags: ["JavaScript", "AI Agents", "NetSuite"],
+  },
+  {
+    org: "Internet Health Report",
+    role: "Google Summer of Code 2025 Contributor",
+    period: "May 2025 — Aug 2025",
+    location: "Remote",
+    bullets: [
+      "Enhanced IYP Browser, a Vue.js frontend for exploring a Neo4j graph: real-time node expansion, Cypher autocompletion, embeddable widgets, and accessibility visualizations with Plotly.js.",
+    ],
+    tags: ["Vue.js", "Neo4j", "Cypher", "Plotly.js"],
+  },
 ];
 
 export type EducationEntry = {
@@ -165,8 +147,9 @@ export type EducationEntry = {
 
 export const education: EducationEntry[] = [
   {
-    school: "BITS Pilani, Goa Campus",
-    // TODO: add degree/major and period (e.g. "B.E. Computer Science", "2023 — 2027")
+    school: "BITS Pilani, K K Birla Goa Campus",
+    degree: "B.E. Electronics & Instrumentation",
+    period: "Oct 2022 — Jul 2026",
   },
 ];
 

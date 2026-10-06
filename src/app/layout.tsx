@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: `${profile.name} — ${profile.role}`,
   description: profile.tagline,
-  keywords: ["portfolio", "software engineer", profile.name],
+  keywords: [profile.name, "Forward Deployed Engineer", "AI agents", "voice AI", "RAG", "portfolio"],
   authors: [{ name: profile.name }],
   openGraph: {
     title: `${profile.name} — ${profile.role}`,
@@ -38,9 +38,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${profile.name} — ${profile.role}`,
     description: profile.tagline,
-  },
-  icons: {
-    icon: "/icon.svg",
   },
 };
 
