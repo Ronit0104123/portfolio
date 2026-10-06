@@ -1,30 +1,29 @@
 // ─────────────────────────────────────────────────────────────────────────
 // SITE CONTENT — edit everything below, nothing else needs to change.
-// Every placeholder is marked TODO. Search this file for "TODO" and fill
-// each one in with your real details before you deploy for real.
+// Remaining placeholders are marked TODO. Search this file for "TODO".
 // ─────────────────────────────────────────────────────────────────────────
 
 export const profile = {
-  name: "Your Name", // TODO: your real name
-  handle: "yourhandle", // TODO: used in the terminal prompt, e.g. "ronit"
-  role: "Software Engineer", // TODO: your current role / title
+  name: "Ronit Jain",
+  handle: "ronit",
+  role: "Forward Deployed Engineer",
   tagline:
-    "I build things for the web and occasionally for production.", // TODO: one sharp line about what you do
-  location: "Earth", // TODO: e.g. "Bengaluru, India"
-  availability: "Open to interesting problems", // TODO: e.g. "Open to full-time roles" / "Not looking right now"
+    "Fullstack engineer building AI and LLM-powered products — currently deploying conversational AI at Gnani.ai.",
+  location: "India",
+  availability: "Building @ Gnani.ai",
   bio: [
-    "TODO: Write 2-3 sentences about who you are, what you work on, and what you care about. Be specific — mention real tools, real numbers, real things you've shipped. Avoid vague buzzwords like 'passionate' or 'innovative'.",
-    "TODO: A second paragraph works well for interests outside code, or the kind of problems you like solving.",
+    "I'm a fullstack engineer who ended up specializing in AI and LLM-powered applications. I currently work as a Forward Deployed Engineer at Gnani.ai, a conversational AI company — I help deploy and customize their voice bots, speech recognition, and NLP automation directly for enterprise clients.",
+    "Outside of work I'm a third-year student at BITS Pilani, Goa Campus, and I spend my free time building things like Vouch (a credit score for developers' work history) and JustExecute (an AI research assistant for evaluating startup ideas) — usually powered by too much coffee and an unreasonable number of open tabs.",
   ],
   resumeUrl: "#", // TODO: link to a hosted PDF resume, or remove the button in Hero.tsx
-  sourceUrl: "https://github.com/Ronit0104123/portfolio", // this site's own repo — shown in the command palette
+  sourceUrl: "https://github.com/Ronit0104123/portfolio",
 };
 
 export const socials = {
-  github: "https://github.com/yourusername", // TODO
-  twitter: "https://twitter.com/yourhandle", // TODO
-  linkedin: "https://linkedin.com/in/yourhandle", // TODO
-  email: "you@example.com", // TODO
+  github: "https://github.com/Ronit0104123",
+  twitter: "#", // TODO: your Twitter/X profile URL
+  linkedin: "https://www.linkedin.com/in/ronit-jain0104/",
+  email: "ronitj0104@gmail.com",
 };
 
 export type Skill = { label: string; level?: "core" | "familiar" };
@@ -34,10 +33,11 @@ export const skills: SkillGroup[] = [
   {
     category: "languages",
     items: [
-      { label: "TypeScript", level: "core" },
       { label: "JavaScript", level: "core" },
+      { label: "TypeScript", level: "core" },
       { label: "Python", level: "core" },
-      { label: "Go", level: "familiar" },
+      { label: "C++", level: "familiar" },
+      { label: "C", level: "familiar" },
     ],
   },
   {
@@ -45,29 +45,28 @@ export const skills: SkillGroup[] = [
     items: [
       { label: "React", level: "core" },
       { label: "Next.js", level: "core" },
+      { label: "Vue.js", level: "familiar" },
       { label: "Tailwind CSS", level: "core" },
-      { label: "Framer Motion", level: "familiar" },
     ],
   },
   {
-    category: "backend",
+    category: "backend & data",
     items: [
-      { label: "Node.js", level: "core" },
-      { label: "PostgreSQL", level: "core" },
-      { label: "Redis", level: "familiar" },
-      { label: "GraphQL", level: "familiar" },
+      { label: "Node.js / Express", level: "core" },
+      { label: "MySQL", level: "core" },
+      { label: "Neo4j", level: "familiar" },
+      { label: "Supabase", level: "familiar" },
     ],
   },
   {
-    category: "tooling",
+    category: "ai & tools",
     items: [
-      { label: "Docker", level: "core" },
+      { label: "LangChain / LangGraph", level: "core" },
+      { label: "OpenAI API", level: "core" },
       { label: "Git", level: "core" },
-      { label: "AWS", level: "familiar" },
-      { label: "CI/CD", level: "familiar" },
+      { label: "Figma", level: "familiar" },
     ],
   },
-  // TODO: replace the above with your actual stack — add/remove categories freely
 ];
 
 export type Project = {
@@ -84,53 +83,53 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "project-one",
-    name: "TODO: Project One",
+    slug: "vouch",
+    name: "Vouch",
     description:
-      "TODO: A crisp, specific description of what this project does, who it's for, and what makes it non-trivial. One or two sentences — no filler.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL"],
+      "A credit score for developers' work history — aggregates your real contributions into a single, verifiable trust signal.",
+    tags: ["TypeScript", "React", "Next.js"],
     year: "2026",
-    github: "#",
-    live: "#",
+    github: "https://github.com/Ronit0104123/Vouch",
+    live: "https://vouch-eta-ten.vercel.app",
     featured: true,
     status: "active",
   },
   {
-    slug: "project-two",
-    name: "TODO: Project Two",
+    slug: "justexecute",
+    name: "JustExecute",
     description:
-      "TODO: Same deal — what it is, the hard part you solved, and the outcome (numbers if you have them: users, latency, stars).",
-    tags: ["React", "Node.js", "Redis"],
-    year: "2025",
-    github: "#",
-    live: "#",
+      "A research assistant that evaluates startup ideas by gathering real-world evidence across market demand, competition, distribution channels, risk, and an execution roadmap.",
+    tags: ["React", "Express", "LangGraph", "Supabase", "OpenAI"],
+    year: "2026",
+    github: "https://github.com/Ronit0104123/startup-copilot",
+    live: "https://startup-copilot-xi.vercel.app",
     featured: true,
     status: "active",
   },
   {
-    slug: "project-three",
-    name: "TODO: Project Three",
+    slug: "taskpilot",
+    name: "TaskPilot",
     description:
-      "TODO: Third highlighted project. Swap this whole array for your real repos — this file is the only place you need to edit.",
-    tags: ["Python", "FastAPI", "Docker"],
-    year: "2025",
-    github: "#",
+      "A multi-agent CLI that interprets vague requests and orchestrates their completion — intent parsing, clarification, planning, and execution across tasks like finding medicines or planning travel.",
+    tags: ["Python", "Multi-agent"],
+    year: "2026",
+    github: "https://github.com/Ronit0104123/taskpilot-cli",
     featured: false,
     status: "archived",
   },
   {
-    slug: "project-four",
-    name: "TODO: Project Four",
+    slug: "linkedin-clone",
+    name: "LinkedIn Clone",
     description:
-      "TODO: Add as many as you want. Set featured: true to pin it to the top row.",
-    tags: ["Go", "gRPC"],
-    year: "2024",
-    github: "#",
+      "A frontend + backend clone of LinkedIn's core feed and profile experience, built to practice full-stack fundamentals end to end.",
+    tags: ["JavaScript", "React"],
+    year: "2025",
+    github: "https://github.com/Ronit0104123/Linkedin-Clone",
     featured: false,
-    status: "wip",
+    status: "archived",
   },
-  // TODO: Tip — give me your GitHub username and I'll pull your real repos
-  // (name, description, language, stars, links) to replace this array.
+  // Pulled live from https://github.com/Ronit0104123 — edit freely, or ask
+  // me to re-sync from GitHub whenever you ship something new.
 ];
 
 export type ExperienceEntry = {
@@ -144,27 +143,17 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    org: "TODO: Company Name",
-    role: "TODO: Your Role",
-    period: "TODO: Jan 2024 — Present",
-    location: "TODO: Remote / City",
+    org: "Gnani.ai",
+    role: "Forward Deployed Engineer",
+    period: "TODO: start month/year — Present",
+    location: "India",
     bullets: [
-      "TODO: A concrete outcome you drove — include a number where you can (perf gain, users, revenue, team size).",
-      "TODO: A second bullet about scope or a system you owned.",
+      "Deploy and customize Gnani.ai's conversational AI stack — voice bots, speech recognition, and NLP automation — directly with enterprise clients.",
+      "TODO: add a concrete system you've owned or an outcome you've driven (a client integration, an automation that cut handling time, a number).",
     ],
-    tags: ["TypeScript", "AWS"],
+    tags: ["Conversational AI", "NLP", "Enterprise Deployment"],
   },
-  {
-    org: "TODO: Previous Company",
-    role: "TODO: Your Role",
-    period: "TODO: Jun 2022 — Dec 2023",
-    location: "TODO: City",
-    bullets: [
-      "TODO: What you shipped and why it mattered.",
-    ],
-    tags: ["React", "Node.js"],
-  },
-  // TODO: replace with your real roles, oldest last or first — your call
+  // TODO: add earlier roles or internships here, most recent first.
 ];
 
 export type EducationEntry = {
@@ -176,10 +165,10 @@ export type EducationEntry = {
 
 export const education: EducationEntry[] = [
   {
-    school: "TODO: University / Institution",
-    degree: "TODO: Degree, Major",
-    period: "TODO: 2020 — 2024",
-    detail: "TODO: GPA, honors, relevant coursework, or leave blank",
+    school: "BITS Pilani, Goa Campus",
+    degree: "TODO: Degree, Major (e.g. B.E. Computer Science)",
+    period: "TODO: e.g. 2023 — 2027",
+    detail: "",
   },
 ];
 
