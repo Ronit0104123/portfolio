@@ -145,30 +145,28 @@ export const experience: ExperienceEntry[] = [
   {
     org: "Gnani.ai",
     role: "Forward Deployed Engineer",
-    period: "TODO: start month/year — Present",
+    period: "Present",
     location: "India",
     bullets: [
       "Deploy and customize Gnani.ai's conversational AI stack — voice bots, speech recognition, and NLP automation — directly with enterprise clients.",
-      "TODO: add a concrete system you've owned or an outcome you've driven (a client integration, an automation that cut handling time, a number).",
     ],
     tags: ["Conversational AI", "NLP", "Enterprise Deployment"],
   },
-  // TODO: add earlier roles or internships here, most recent first.
+  // TODO: add a start date (e.g. "Jan 2026 — Present"), a second bullet with
+  // a concrete outcome, and any earlier roles or internships.
 ];
 
 export type EducationEntry = {
   school: string;
-  degree: string;
-  period: string;
+  degree?: string;
+  period?: string;
   detail?: string;
 };
 
 export const education: EducationEntry[] = [
   {
     school: "BITS Pilani, Goa Campus",
-    degree: "TODO: Degree, Major (e.g. B.E. Computer Science)",
-    period: "TODO: e.g. 2023 — 2027",
-    detail: "",
+    // TODO: add degree/major and period (e.g. "B.E. Computer Science", "2023 — 2027")
   },
 ];
 

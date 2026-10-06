@@ -108,7 +108,7 @@ export function CommandPalette() {
         group: "Meta",
         action: () => navigator.clipboard.writeText(window.location.href),
       },
-    ],
+    ].filter((item) => !(item.id === "open-twitter" && socials.twitter === "#")),
     []
   );
 

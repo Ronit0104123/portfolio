@@ -21,8 +21,8 @@ export function About() {
               {education.map((ed) => (
                 <div key={ed.school} className="border-l-2 border-accent-soft pl-3">
                   <p className="text-text">{ed.school}</p>
-                  <p className="text-text-muted">{ed.degree}</p>
-                  <p className="text-text-dim">{ed.period}</p>
+                  {ed.degree && <p className="text-text-muted">{ed.degree}</p>}
+                  {ed.period && <p className="text-text-dim">{ed.period}</p>}
                   {ed.detail && (
                     <p className="mt-1 text-text-dim">{ed.detail}</p>
                   )}

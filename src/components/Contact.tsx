@@ -10,7 +10,7 @@ const links = [
   { label: "Twitter / X", href: socials.twitter, icon: XIcon },
   { label: "LinkedIn", href: socials.linkedin, icon: LinkedinIcon },
   { label: "Email", href: `mailto:${socials.email}`, icon: Mail },
-];
+].filter((link) => link.href !== "#");
 
 export function Contact() {
   return (

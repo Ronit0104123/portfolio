@@ -103,7 +103,7 @@ export function InteractiveTerminal() {
         break;
       case "socials":
         push(`github: ${socials.github}`);
-        push(`twitter: ${socials.twitter}`);
+        if (socials.twitter !== "#") push(`twitter: ${socials.twitter}`);
         push(`linkedin: ${socials.linkedin}`);
         break;
       case "resume":
