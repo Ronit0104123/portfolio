@@ -17,6 +17,7 @@ export const profile = {
     "TODO: A second paragraph works well for interests outside code, or the kind of problems you like solving.",
   ],
   resumeUrl: "#", // TODO: link to a hosted PDF resume, or remove the button in Hero.tsx
+  sourceUrl: "https://github.com/Ronit0104123/portfolio", // this site's own repo — shown in the command palette
 };
 
 export const socials = {

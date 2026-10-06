@@ -3,6 +3,7 @@ import { profile, socials } from "@/lib/content";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { GithubIcon, LinkedinIcon, XIcon } from "./icons";
+import { CopyEmailButton } from "./CopyEmailButton";
 
 const links = [
   { label: "GitHub", href: socials.github, icon: GithubIcon },
@@ -29,13 +30,7 @@ export function Contact() {
             few days.
           </p>
 
-          <a
-            href={`mailto:${socials.email}`}
-            className="mt-7 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
-          >
-            <Mail size={16} />
-            {socials.email}
-          </a>
+          <CopyEmailButton email={socials.email} />
 
           <div className="mt-8 flex items-center justify-center gap-5">
             {links.map(({ label, href, icon: Icon }) => (

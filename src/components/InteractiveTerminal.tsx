@@ -14,7 +14,7 @@ function buildHelp() {
   const routes = nav.map((n) => n.label).join(", ");
   return [
     `available commands: ${routes}, socials, resume, echo <text>, clear, help`,
-    "tip: try pressing ↑ for command history",
+    "tip: try pressing ↑ for command history, or ⌘K for the command palette",
   ];
 }
 
@@ -130,7 +130,15 @@ export function InteractiveTerminal() {
         push(arg || "");
         break;
       case "sudo":
-        push("nice try. permission denied.");
+        if (arg.toLowerCase().includes("rm -rf")) {
+          push("deleting your portfolio… just kidding. nice try.");
+        } else {
+          push("nice try. permission denied.");
+        }
+        break;
+      case "matrix":
+        push("wake up…");
+        window.dispatchEvent(new Event("trigger-matrix-rain"));
         break;
       case "clear":
         setLines([]);

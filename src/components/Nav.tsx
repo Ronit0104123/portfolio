@@ -70,14 +70,27 @@ export function Nav() {
           ))}
         </ul>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="sm:hidden text-text-muted hover:text-text"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? "[x]" : "[menu]"}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => window.dispatchEvent(new Event("toggle-command-palette"))}
+            className="hidden items-center gap-1.5 rounded border border-border px-2 py-1 text-xs text-text-dim transition-colors hover:border-border-hover hover:text-text sm:flex"
+            aria-label="Open command palette"
+          >
+            <span>search</span>
+            <kbd className="rounded border border-border bg-bg px-1 text-[10px]">
+              ⌘K
+            </kbd>
+          </button>
+
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="sm:hidden text-text-muted hover:text-text"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? "[x]" : "[menu]"}
+          </button>
+        </div>
       </nav>
 
       {open && (
@@ -93,6 +106,17 @@ export function Nav() {
               </a>
             </li>
           ))}
+          <li>
+            <button
+              onClick={() => {
+                setOpen(false);
+                window.dispatchEvent(new Event("toggle-command-palette"));
+              }}
+              className="block w-full rounded px-3 py-2 text-left text-text-muted hover:bg-white/[0.04] hover:text-text"
+            >
+              ./search
+            </button>
+          </li>
         </ul>
       )}
     </header>

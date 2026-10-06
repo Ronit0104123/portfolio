@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, IBM_Plex_Sans } from "next/font/google";
 import { profile } from "@/lib/content";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { CommandPalette } from "@/components/CommandPalette";
+import { MatrixRain } from "@/components/MatrixRain";
+import { CursorGlow } from "@/components/CursorGlow";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -52,6 +56,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-bg text-text selection:bg-accent">
         <div className="noise-overlay" aria-hidden="true" />
+        <CursorGlow />
+        <ScrollProgress />
+        <CommandPalette />
+        <MatrixRain />
         {children}
       </body>
     </html>
