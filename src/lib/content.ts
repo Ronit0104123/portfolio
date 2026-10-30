@@ -1,6 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────
 // SITE CONTENT — edit everything below, nothing else needs to change.
-// Remaining placeholders are marked TODO. Search this file for "TODO".
 // ─────────────────────────────────────────────────────────────────────────
 
 export const profile = {
@@ -15,13 +14,13 @@ export const profile = {
     "I'm a Forward Deployed Engineer at Gnani.ai, building voice agents for BFSI and telecom clients like Airtel and L&T Finance, plus Gnani Agent Studio, the internal platform used to configure them. Before that I built AI agents at 100x and was a Google Summer of Code 2025 contributor to the Internet Health Report.",
     "I graduated from BITS Pilani, Goa with a B.E. in Electronics & Instrumentation. On the side I ship AI products end to end (RAG chatbots, a startup-validation engine, a credit score for engineers) and write about AI, startups, and software for 4,000+ followers on LinkedIn.",
   ],
-  resumeUrl: "#", // TODO: drop your PDF in /public (e.g. public/resume.pdf) and set this to "/resume.pdf"
+  resumeUrl: "/resume.pdf",
   sourceUrl: "https://github.com/Ronit0104123/portfolio",
 };
 
 export const socials = {
   github: "https://github.com/Ronit0104123",
-  twitter: "#", // TODO: your Twitter/X profile URL
+  twitter: "https://x.com/ronitj0104",
   linkedin: "https://www.linkedin.com/in/ronit-jain0104/",
   email: "ronitj0104@gmail.com",
 };
@@ -77,6 +76,8 @@ export const projects: Project[] = [
       "Multi-tenant RAG SaaS for lead generation. Paste a website URL and get an embeddable chatbot that answers visitors from your indexed content and captures leads. Crawled HTML, PDFs and DOCX go into pgvector, and the LangChain agent is covered by 12 unit tests against LLM failure modes.",
     tags: ["FastAPI", "Next.js", "LangChain", "pgvector", "Supabase"],
     year: "2026",
+    github: "https://github.com/Ronit0104123/Conversa",
+    live: "https://conversa-tawny.vercel.app",
     featured: true,
   },
   {
