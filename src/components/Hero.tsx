@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative mx-auto flex max-w-5xl flex-col gap-10 px-5 pt-16 pb-20 sm:pt-24 lg:flex-row lg:items-center lg:gap-8 lg:pt-28"
+      className="relative mx-auto flex max-w-5xl flex-col gap-10 px-5 pt-16 pb-14 sm:pt-24 sm:pb-20 lg:flex-row lg:items-center lg:gap-8 lg:pt-28"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[540px] bg-grid [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_40%,transparent_100%)]" />
 

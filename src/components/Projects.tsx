@@ -8,7 +8,7 @@ export function Projects() {
   const rest = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="mx-auto max-w-5xl px-5 py-20 sm:py-28">
+    <section id="projects" className="mx-auto max-w-5xl px-5 py-14 sm:py-20">
       <SectionHeading index="03" title="projects" />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

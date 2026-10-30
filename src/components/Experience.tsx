@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-5xl px-5 py-20 sm:py-28">
+    <section id="experience" className="mx-auto max-w-5xl px-5 py-14 sm:py-20">
       <SectionHeading index="04" title="experience" />
 
       <div className="relative space-y-8 border-l border-border pl-6 sm:pl-8">

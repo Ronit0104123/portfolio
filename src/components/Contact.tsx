@@ -14,7 +14,7 @@ const links = [
 
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-5 py-20 sm:py-28">
+    <section id="contact" className="mx-auto max-w-5xl px-5 py-14 sm:py-20">
       <SectionHeading index="05" title="contact" />
 
       <Reveal>

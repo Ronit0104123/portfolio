@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-5xl px-5 py-20 sm:py-28">
+    <section id="skills" className="mx-auto max-w-5xl px-5 py-14 sm:py-20">
       <SectionHeading index="02" title="skills" />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

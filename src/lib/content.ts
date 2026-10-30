@@ -152,6 +152,14 @@ export const education: EducationEntry[] = [
     degree: "B.E. Electronics & Instrumentation",
     period: "Oct 2022 — Jul 2026",
   },
+  {
+    school: "Delhi Public School, R. K. Puram, New Delhi",
+    degree: "Class XI – XII, Science",
+  },
+  {
+    school: "G. D. Goenka Public School, Vasant Kunj, New Delhi",
+    degree: "Nursery – Class X",
+  },
 ];
 
 export const nav = [
