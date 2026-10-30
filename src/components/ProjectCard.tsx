@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/content";
 import { GithubIcon } from "./icons";
@@ -26,12 +27,12 @@ export function ProjectCard({
     <div
       ref={ref}
       onMouseMove={onMouseMove}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-lg border border-border bg-bg-raised/40 p-5 transition-all hover:-translate-y-1 hover:border-border-hover hover:bg-bg-raised ${
+      className={`group relative isolate flex h-full flex-col overflow-hidden rounded-lg border border-border bg-bg-raised/40 p-5 transition-all hover:-translate-y-1 hover:border-border-hover hover:bg-bg-raised ${
         large ? "sm:p-6" : ""
       }`}
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
             "radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--color-accent-soft), transparent 70%)",
@@ -39,15 +40,22 @@ export function ProjectCard({
         aria-hidden="true"
       />
 
-      <div className="relative mb-3 flex items-start justify-between gap-3">
+      <div className="mb-3 flex items-start justify-between gap-3">
         <h3
           className={`font-mono font-semibold text-text ${
             large ? "text-lg" : "text-base"
           }`}
         >
-          {project.name}
+          {/* Stretched link: the whole card opens the project page, while the
+              icon links below sit above it (relative z-10) and stay clickable. */}
+          <Link
+            href={`/projects/${project.slug}`}
+            className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:rounded-lg focus-visible:after:ring-2 focus-visible:after:ring-accent"
+          >
+            {project.name}
+          </Link>
         </h3>
-        <div className="flex shrink-0 items-center gap-3 text-text-dim">
+        <div className="relative z-10 flex shrink-0 items-center gap-3 text-text-dim">
           {project.github && (
             <a
               href={project.github}
@@ -73,11 +81,11 @@ export function ProjectCard({
         </div>
       </div>
 
-      <p className="relative flex-1 text-sm leading-relaxed text-text-muted">
+      <p className="flex-1 text-sm leading-relaxed text-text-muted">
         {project.description}
       </p>
 
-      <div className="relative mt-5 flex flex-wrap items-center justify-between gap-3">
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
             <span
@@ -88,7 +96,9 @@ export function ProjectCard({
             </span>
           ))}
         </div>
-        <span className="font-mono text-[11px] text-text-dim">{project.year}</span>
+        <span className="font-mono text-[11px] text-text-dim transition-colors group-hover:text-accent">
+          {project.year} · read more →
+        </span>
       </div>
     </div>
   );

@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { nav, profile } from "@/lib/content";
 
-export function Nav() {
+// On pages other than the home page, section links point back to "/#section".
+export function Nav({ home = true }: { home?: boolean }) {
+  const prefix = home ? "" : "/";
   const [active, setActive] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -16,6 +18,7 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
+    if (!home) return;
     const sections = nav
       .map((n) => document.querySelector(n.href))
       .filter((el): el is Element => !!el);
@@ -33,7 +36,7 @@ export function Nav() {
 
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  }, [home]);
 
   return (
     <header
@@ -45,7 +48,7 @@ export function Nav() {
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4 font-mono text-sm">
         <a
-          href="#top"
+          href={home ? "#top" : "/"}
           className="flex items-center gap-1.5 text-text hover:text-accent transition-colors"
         >
           <span className="text-accent">~</span>
@@ -57,7 +60,7 @@ export function Nav() {
           {nav.map((item) => (
             <li key={item.href}>
               <a
-                href={item.href}
+                href={prefix + item.href}
                 className={`rounded px-3 py-1.5 transition-colors ${
                   active === item.href
                     ? "text-accent bg-accent-soft"
@@ -98,7 +101,7 @@ export function Nav() {
           {nav.map((item) => (
             <li key={item.href}>
               <a
-                href={item.href}
+                href={prefix + item.href}
                 onClick={() => setOpen(false)}
                 className="block rounded px-3 py-2 text-text-muted hover:bg-white/[0.04] hover:text-text"
               >

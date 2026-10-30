@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { nav, profile, socials } from "@/lib/content";
+import { useRouter } from "next/navigation";
+import { nav, profile, projects, socials } from "@/lib/content";
 
 type Item = {
   id: string;
@@ -16,6 +17,7 @@ export function CommandPalette() {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   function openPalette() {
     setQuery("");
@@ -67,8 +69,19 @@ export function CommandPalette() {
         label: `Go to ${n.label}`,
         hint: n.href,
         group: "Navigate",
-        action: () =>
-          document.querySelector(n.href)?.scrollIntoView({ behavior: "smooth" }),
+        action: () => {
+          const el = document.querySelector(n.href);
+          // Sections only exist on the home page; elsewhere, go back there.
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+          else router.push(`/${n.href}`);
+        },
+      })),
+      ...projects.map((p) => ({
+        id: `project-${p.slug}`,
+        label: `Open project: ${p.name}`,
+        hint: p.year,
+        group: "Projects",
+        action: () => router.push(`/projects/${p.slug}`),
       })),
       {
         id: "copy-email",
@@ -109,7 +122,7 @@ export function CommandPalette() {
         action: () => navigator.clipboard.writeText(window.location.href),
       },
     ].filter((item) => !(item.id === "open-twitter" && socials.twitter === "#")),
-    []
+    [router]
   );
 
   const filtered = items.filter((i) =>

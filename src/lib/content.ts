@@ -55,6 +55,8 @@ export type Project = {
   github?: string;
   live?: string;
   featured?: boolean;
+  // Shown on the project's own page at /projects/<slug>
+  highlights: string[];
 };
 
 export const projects: Project[] = [
@@ -68,6 +70,12 @@ export const projects: Project[] = [
     github: "https://github.com/Ronit0104123/Vouch",
     live: "https://vouch-eta-ten.vercel.app",
     featured: true,
+    highlights: [
+      "Employers submit free-text reviews of engineers they've worked with.",
+      "A Hermes agent scores each review across 6 dimensions and rolls them into a single Vouch Score from 0 to 100.",
+      "Engineers own their record. They decide who can see it and can reply to any review.",
+      "Payments run through Dodo Payments, with Convex as the backend.",
+    ],
   },
   {
     slug: "conversa",
@@ -79,6 +87,12 @@ export const projects: Project[] = [
     github: "https://github.com/Ronit0104123/Conversa",
     live: "https://conversa-tawny.vercel.app",
     featured: true,
+    highlights: [
+      "Paste a website URL and get an embeddable chatbot that answers visitors from that site's content.",
+      "Crawls HTML pages, PDFs and DOCX files and indexes them into pgvector.",
+      "Captures leads from chat conversations. Multi-tenant, so each customer's data stays separate.",
+      "12 unit tests cover the LangChain agent's LLM failure modes.",
+    ],
   },
   {
     slug: "justexecute",
@@ -90,6 +104,12 @@ export const projects: Project[] = [
     github: "https://github.com/Ronit0104123/startup-copilot",
     live: "https://startup-copilot-xi.vercel.app",
     featured: true,
+    highlights: [
+      "Takes a one-sentence startup idea and returns a market-validation report plus a 90-day GTM plan in under 2 minutes.",
+      "A 5-stage LangGraph state machine orchestrates the pipeline.",
+      "Runs Tavily web searches in parallel to keep latency down.",
+      "6 custom retrieval tools ground every claim in Reddit and Hacker News evidence.",
+    ],
   },
 ];
 
