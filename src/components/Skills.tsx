@@ -1,34 +1,34 @@
 import { skills } from "@/lib/content";
-import { SectionHeading } from "./SectionHeading";
+import { Section } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
 export function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-5xl px-5 py-14 sm:py-20">
-      <SectionHeading index="02" title="skills" />
-
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {skills.map((group, i) => (
-          <Reveal key={group.category} delay={i * 0.06}>
-            <div className="h-full rounded-lg border border-border bg-bg-raised/40 p-5 transition-colors hover:border-border-hover">
-              <p className="mb-4 font-mono text-xs uppercase tracking-wider text-text-dim">
+    <Section id="skills" index="04" title="Skills">
+      <Reveal>
+        <dl>
+          {skills.map((group) => (
+            <div
+              key={group.category}
+              className="grid gap-x-6 gap-y-1 border-b border-border py-4 first:pt-0 grid-cols-1 sm:grid-cols-[140px_1fr]"
+            >
+              <dt className="font-mono text-xs uppercase tracking-[0.14em] text-text-dim sm:pt-0.5">
                 {group.category}
-              </p>
-              <ul className="space-y-2.5">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2 text-sm text-text"
-                  >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+              </dt>
+              <dd className="flex min-w-0 flex-wrap gap-y-1 text-text">
+                {group.items.map((item, i) => (
+                  <span key={item}>
                     {item}
-                  </li>
+                    {i < group.items.length - 1 && (
+                      <span className="mx-2 text-text-dim">/</span>
+                    )}
+                  </span>
                 ))}
-              </ul>
+              </dd>
             </div>
-          </Reveal>
-        ))}
-      </div>
-    </section>
+          ))}
+        </dl>
+      </Reveal>
+    </Section>
   );
 }

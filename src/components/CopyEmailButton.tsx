@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Check } from "lucide-react";
 
 export function CopyEmailButton({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
@@ -19,10 +18,9 @@ export function CopyEmailButton({ email }: { email: string }) {
   return (
     <button
       onClick={handleClick}
-      className="mt-7 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
+      className="font-mono text-xs uppercase tracking-[0.14em] text-text-dim transition-colors hover:text-accent"
     >
-      {copied ? <Check size={16} /> : <Mail size={16} />}
-      {copied ? "copied to clipboard" : email}
+      {copied ? "copied ✓" : "copy"}
     </button>
   );
 }

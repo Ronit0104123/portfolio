@@ -25,6 +25,14 @@ export const socials = {
   email: "ronitj0104@gmail.com",
 };
 
+// Short at-a-glance facts shown under the hero headline.
+export const facts = [
+  { label: "Now", value: "Forward Deployed Engineer, Gnani.ai" },
+  { label: "Before", value: "AI agents at 100x · GSoC 2025" },
+  { label: "Studied", value: "BITS Pilani, Goa" },
+  { label: "Writes", value: "4,000+ followers on LinkedIn" },
+];
+
 export type SkillGroup = { category: string; items: string[] };
 
 export const skills: SkillGroup[] = [
@@ -106,7 +114,7 @@ export const experience: ExperienceEntry[] = [
   {
     org: "Gnani.ai",
     role: "Forward Deployed Engineer",
-    period: "Jun 2026 — Present",
+    period: "Jun 2026 – Present",
     location: "Bengaluru, India",
     bullets: [
       "Built Gnani Agent Studio, an internal platform for configuring BFSI voice agents. A structured QA flow captures requirements and generates system prompts modularly, per product type (personal loan, vehicle loan) and call-flow scenario (PTP, third-party collections), optimized for KV caching.",
@@ -119,7 +127,7 @@ export const experience: ExperienceEntry[] = [
   {
     org: "100x",
     role: "AI Agents Developer",
-    period: "Aug 2025 — Dec 2025",
+    period: "Aug 2025 – Dec 2025",
     location: "Bengaluru, India",
     bullets: [
       "Built AI agents for candidate sourcing (TrueSearch), NetSuite workflows, and QA/UAT testing, cutting manual testing effort by 80%.",
@@ -130,7 +138,7 @@ export const experience: ExperienceEntry[] = [
   {
     org: "Internet Health Report",
     role: "Google Summer of Code 2025 Contributor",
-    period: "May 2025 — Aug 2025",
+    period: "May 2025 – Aug 2025",
     location: "Remote",
     bullets: [
       "Enhanced IYP Browser, a Vue.js frontend for exploring a Neo4j graph: real-time node expansion, Cypher autocompletion, embeddable widgets, and accessibility visualizations with Plotly.js.",
@@ -150,7 +158,7 @@ export const education: EducationEntry[] = [
   {
     school: "BITS Pilani, K K Birla Goa Campus",
     degree: "B.E. Electronics & Instrumentation",
-    period: "Oct 2022 — Jul 2026",
+    period: "Oct 2022 – Jul 2026",
   },
   {
     school: "Delhi Public School, R. K. Puram, New Delhi",
@@ -164,8 +172,8 @@ export const education: EducationEntry[] = [
 
 export const nav = [
   { label: "about", href: "#about" },
-  { label: "skills", href: "#skills" },
   { label: "projects", href: "#projects" },
   { label: "experience", href: "#experience" },
+  { label: "skills", href: "#skills" },
   { label: "contact", href: "#contact" },
 ];

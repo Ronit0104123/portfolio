@@ -1,58 +1,44 @@
 import { experience } from "@/lib/content";
-import { SectionHeading } from "./SectionHeading";
+import { Section } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
 export function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-5xl px-5 py-14 sm:py-20">
-      <SectionHeading index="04" title="experience" />
-
-      <div className="relative space-y-8 border-l border-border pl-6 sm:pl-8">
+    <Section id="experience" index="03" title="Experience">
+      <ol>
         {experience.map((entry, i) => (
-          <Reveal key={entry.org + entry.period} delay={i * 0.08}>
-            <div className="relative">
-              <span className="absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-bg bg-accent sm:-left-[39px]" />
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="font-mono text-base font-semibold text-text">
-                  {entry.role} <span className="text-text-dim">@</span>{" "}
+          <li key={entry.org + entry.period} className="border-b border-border py-8 first:pt-0">
+            <Reveal delay={i * 0.05} className="grid gap-x-6 gap-y-2 sm:grid-cols-[150px_1fr]">
+              <div className="font-mono text-xs leading-relaxed text-text-dim">
+                <p>{entry.period}</p>
+                {entry.location && <p>{entry.location}</p>}
+              </div>
+
+              <div>
+                <h3 className="font-serif text-2xl leading-tight text-text">
                   {entry.org}
                 </h3>
-                <span className="font-mono text-xs text-text-dim">
-                  {entry.period}
-                </span>
-              </div>
-              {entry.location && (
-                <p className="mt-0.5 font-mono text-xs text-text-dim">
-                  {entry.location}
-                </p>
-              )}
-              <ul className="mt-3 space-y-1.5">
-                {entry.bullets.map((bullet, bi) => (
-                  <li
-                    key={bi}
-                    className="flex gap-2 text-sm leading-relaxed text-text-muted"
-                  >
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-text-dim" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-              {entry.tags && entry.tags.length > 0 && (
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {entry.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded border border-border px-2 py-0.5 font-mono text-[11px] text-text-dim"
-                    >
-                      {tag}
-                    </span>
+                <p className="mt-1 text-sm text-text-muted">{entry.role}</p>
+
+                <ul className="mt-4 max-w-2xl space-y-2.5">
+                  {entry.bullets.map((bullet, bi) => (
+                    <li key={bi} className="flex gap-3 leading-relaxed text-text-muted">
+                      <span className="select-none text-text-dim">–</span>
+                      <span>{bullet}</span>
+                    </li>
                   ))}
-                </div>
-              )}
-            </div>
-          </Reveal>
+                </ul>
+
+                {entry.tags && entry.tags.length > 0 && (
+                  <p className="mt-4 font-mono text-xs text-text-dim">
+                    {entry.tags.join(" · ")}
+                  </p>
+                )}
+              </div>
+            </Reveal>
+          </li>
         ))}
-      </div>
-    </section>
+      </ol>
+    </Section>
   );
 }

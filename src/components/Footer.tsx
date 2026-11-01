@@ -1,12 +1,24 @@
+import { profile } from "@/lib/content";
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-5 py-6 font-mono text-xs text-text-dim sm:flex-row">
-        <p>© {year} — all rights reserved</p>
-        <a href="#top" className="transition-colors hover:text-accent">
-          $ cd ~/top
-        </a>
+    <footer className="mx-auto w-full max-w-5xl px-5">
+      <div className="flex flex-col justify-between gap-2 border-t border-border py-8 font-mono text-[11px] text-text-dim sm:flex-row">
+        <p>
+          © {year} {profile.name}. Built in Bengaluru, set in Newsreader &amp; Plex.
+        </p>
+        <p>
+          Press <kbd className="text-text-muted">⌘K</kbd> to get around ·{" "}
+          <a
+            href={profile.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link"
+          >
+            source
+          </a>
+        </p>
       </div>
     </footer>
   );

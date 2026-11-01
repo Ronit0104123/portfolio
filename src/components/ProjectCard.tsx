@@ -1,94 +1,50 @@
-"use client";
-
-import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/content";
-import { GithubIcon } from "./icons";
 
-export function ProjectCard({
-  project,
-  large = false,
-}: {
-  project: Project;
-  large?: boolean;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
-  }
-
+// One row of the project index: number, name and pitch, stack, and links.
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <div
-      ref={ref}
-      onMouseMove={onMouseMove}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-lg border border-border bg-bg-raised/40 p-5 transition-all hover:-translate-y-1 hover:border-border-hover hover:bg-bg-raised ${
-        large ? "sm:p-6" : ""
-      }`}
-    >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--color-accent-soft), transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
+    <div className="grid gap-x-6 gap-y-3 sm:grid-cols-[48px_1fr]">
+      <span className="font-mono text-xs text-text-dim sm:pt-3">
+        {String(index).padStart(2, "0")}
+      </span>
 
-      <div className="relative mb-3 flex items-start justify-between gap-3">
-        <h3
-          className={`font-mono font-semibold text-text ${
-            large ? "text-lg" : "text-base"
-          }`}
-        >
-          {project.name}
-        </h3>
-        <div className="flex shrink-0 items-center gap-3 text-text-dim">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${project.name} on GitHub`}
-              className="transition-colors hover:text-accent"
-            >
-              <GithubIcon size={18} />
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${project.name} live site`}
-              className="transition-colors hover:text-accent"
-            >
-              <ArrowUpRight size={18} />
-            </a>
-          )}
+      <div>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+          <h3 className="font-serif text-3xl leading-tight text-text transition-colors group-hover:text-accent sm:text-4xl">
+            {project.name}
+          </h3>
+          <span className="font-mono text-xs text-text-dim">{project.year}</span>
         </div>
-      </div>
 
-      <p className="relative flex-1 text-sm leading-relaxed text-text-muted">
-        {project.description}
-      </p>
+        <p className="mt-3 max-w-2xl leading-relaxed text-text-muted">
+          {project.description}
+        </p>
 
-      <div className="relative mt-5 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-1.5">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded border border-border px-2 py-0.5 font-mono text-[11px] text-text-dim"
-            >
-              {tag}
-            </span>
-          ))}
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+          <p className="font-mono text-xs text-text-dim">{project.tags.join(" · ")}</p>
+          <div className="flex gap-5 text-sm">
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link text-text"
+              >
+                Visit<span className="ml-0.5 text-text-dim">↗</span>
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link text-text"
+              >
+                Code<span className="ml-0.5 text-text-dim">↗</span>
+              </a>
+            )}
+          </div>
         </div>
-        <span className="font-mono text-[11px] text-text-dim">{project.year}</span>
       </div>
     </div>
   );

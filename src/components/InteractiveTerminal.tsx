@@ -246,7 +246,7 @@ export function InteractiveTerminal() {
     <div className="flex flex-col font-mono text-[13px] leading-relaxed sm:text-sm">
       <div
         ref={scrollRef}
-        className="h-full max-h-[360px] min-h-[260px] cursor-text overflow-y-auto"
+        className="h-full max-h-[340px] min-h-[200px] cursor-text overflow-y-auto"
         onClick={() => inputRef.current?.focus()}
       >
         {lines.map((line, i) => (

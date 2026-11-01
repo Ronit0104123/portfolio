@@ -1,57 +1,48 @@
-import { Mail } from "lucide-react";
-import { profile, socials } from "@/lib/content";
-import { SectionHeading } from "./SectionHeading";
+import { socials } from "@/lib/content";
+import { Section } from "./SectionHeading";
 import { Reveal } from "./Reveal";
-import { GithubIcon, LinkedinIcon, XIcon } from "./icons";
 import { CopyEmailButton } from "./CopyEmailButton";
 
 const links = [
-  { label: "GitHub", href: socials.github, icon: GithubIcon },
-  { label: "Twitter / X", href: socials.twitter, icon: XIcon },
-  { label: "LinkedIn", href: socials.linkedin, icon: LinkedinIcon },
-  { label: "Email", href: `mailto:${socials.email}`, icon: Mail },
+  { label: "GitHub", href: socials.github },
+  { label: "LinkedIn", href: socials.linkedin },
+  { label: "X", href: socials.twitter },
 ].filter((link) => link.href !== "#");
 
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-5 py-14 sm:py-20">
-      <SectionHeading index="05" title="contact" />
-
+    <Section id="contact" index="05" title="Contact">
       <Reveal>
-        <div className="rounded-lg border border-border bg-bg-raised/40 p-8 text-center sm:p-12">
-          <p className="font-mono text-sm text-text-dim">
-            $ echo &quot;let&apos;s build something&quot;
-          </p>
-          <h3 className="mt-3 text-2xl font-bold tracking-tight text-text sm:text-3xl">
-            Have a project, a role, or just want to say hi?
-          </h3>
-          <p className="mx-auto mt-3 max-w-md text-sm text-text-muted">
-            My inbox is open. I try to reply to everyone — even if it takes a
-            few days.
-          </p>
+        <h2 className="font-serif text-[clamp(2.5rem,7vw,4.5rem)] leading-[0.95] tracking-[-0.02em] text-text">
+          Let&apos;s <span className="italic">talk.</span>
+        </h2>
 
+        <div className="mt-8 flex flex-wrap items-baseline gap-x-5 gap-y-2">
+          <a
+            href={`mailto:${socials.email}`}
+            className="link font-serif text-2xl text-text sm:text-3xl"
+          >
+            {socials.email}
+          </a>
           <CopyEmailButton email={socials.email} />
-
-          <div className="mt-8 flex items-center justify-center gap-5">
-            {links.map(({ label, href, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("mailto:") ? undefined : "_blank"}
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="text-text-dim transition-colors hover:text-accent"
-              >
-                <Icon size={20} />
-              </a>
-            ))}
-          </div>
         </div>
-      </Reveal>
 
-      <p className="mt-4 text-center font-mono text-xs text-text-dim">
-        {profile.name} · built from scratch, not a template
-      </p>
-    </section>
+        <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          {links.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link text-text-muted"
+              >
+                {link.label}
+                <span className="ml-0.5 text-text-dim">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+    </Section>
   );
 }
