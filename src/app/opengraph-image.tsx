@@ -16,10 +16,10 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "#08090b",
+          background: "#07080d",
           backgroundImage:
-            "linear-gradient(#22252c 1px, transparent 1px), linear-gradient(90deg, #22252c 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
+            "radial-gradient(circle at 85% 10%, #8b8cff40, transparent 45%), radial-gradient(circle at 10% 90%, #5ef2c230, transparent 45%), linear-gradient(#1c2030 1px, transparent 1px), linear-gradient(90deg, #1c2030 1px, transparent 1px)",
+          backgroundSize: "100% 100%, 100% 100%, 44px 44px, 44px 44px",
           fontFamily: "monospace",
         }}
       >
@@ -28,7 +28,7 @@ export default async function Image() {
             display: "flex",
             alignItems: "center",
             gap: 10,
-            color: "#7ee787",
+            color: "#5ef2c2",
             fontSize: 24,
             marginBottom: 28,
           }}
@@ -41,20 +41,20 @@ export default async function Image() {
             display: "flex",
             fontSize: 72,
             fontWeight: 700,
-            color: "#e7e9ec",
+            color: "#e9ebf3",
             letterSpacing: "-0.02em",
           }}
         >
           {profile.name}
         </div>
-        <div style={{ display: "flex", fontSize: 34, color: "#ffb454", marginTop: 18 }}>
+        <div style={{ display: "flex", fontSize: 34, color: "#8b8cff", marginTop: 18 }}>
           {profile.role}
         </div>
         <div
           style={{
             display: "flex",
             fontSize: 24,
-            color: "#8c9099",
+            color: "#9aa0b4",
             marginTop: 24,
             maxWidth: 900,
           }}

@@ -19,7 +19,7 @@ export function CopyEmailButton({ email }: { email: string }) {
   return (
     <button
       onClick={handleClick}
-      className="mt-7 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
+      className="mt-7 inline-flex items-center gap-2 bg-gradient-accent rounded-md px-5 py-3 font-mono text-sm font-medium text-bg shadow-[0_8px_30px_-8px_var(--color-accent)] transition-all hover:-translate-y-0.5"
     >
       {copied ? <Check size={16} /> : <Mail size={16} />}
       {copied ? "copied to clipboard" : email}

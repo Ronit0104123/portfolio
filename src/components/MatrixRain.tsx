@@ -36,9 +36,9 @@ export function MatrixRain() {
 
     function draw() {
       if (!ctx || !canvas) return;
-      ctx.fillStyle = "rgba(8, 9, 11, 0.09)";
+      ctx.fillStyle = "rgba(7, 8, 13, 0.09)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#ffb454";
+      ctx.fillStyle = "#5ef2c2";
       ctx.font = `${fontSize}px monospace`;
 
       drops.forEach((y, i) => {

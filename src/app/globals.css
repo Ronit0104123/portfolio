@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #08090b;
-  --color-bg-raised: #101216;
-  --color-bg-hover: #16191f;
-  --color-border: #22252c;
-  --color-border-hover: #33373f;
-  --color-text: #e7e9ec;
-  --color-text-muted: #8c9099;
-  --color-text-dim: #5c6068;
-  --color-accent: #ffb454;
-  --color-accent-soft: #ffb45426;
-  --color-accent-2: #7dd3c0;
-  --color-ok: #7ee787;
-  --color-err: #ff6b6b;
+  /* "aurora" palette: blue-black base, mint primary, periwinkle secondary */
+  --color-bg: #07080d;
+  --color-bg-raised: #0d0f16;
+  --color-bg-hover: #141722;
+  --color-border: #1c2030;
+  --color-border-hover: #2e3449;
+  --color-text: #e9ebf3;
+  --color-text-muted: #9aa0b4;
+  --color-text-dim: #6c7389;
+  --color-accent: #5ef2c2;
+  --color-accent-soft: #5ef2c21f;
+  --color-accent-2: #8b8cff;
+  --color-accent-2-soft: #8b8cff1f;
+  --color-ok: #5ef2c2;
+  --color-err: #ff6b81;
 
   --font-mono: var(--font-jetbrains-mono);
   --font-sans: var(--font-plex-sans);
@@ -31,6 +33,7 @@
   --color-accent: var(--color-accent);
   --color-accent-soft: var(--color-accent-soft);
   --color-accent-2: var(--color-accent-2);
+  --color-accent-2-soft: var(--color-accent-2-soft);
   --color-ok: var(--color-ok);
   --color-err: var(--color-err);
   --font-mono: var(--font-mono);
@@ -46,6 +49,9 @@ html {
 }
 
 body {
+  /* clip (not hidden) so decorative glows can't cause sideways scroll
+     without turning body into a scroll container that breaks sticky nav */
+  overflow-x: clip;
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
@@ -54,7 +60,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: #08090b;
+  color: var(--color-bg);
 }
 
 ::-webkit-scrollbar {
@@ -87,6 +93,83 @@ body {
     linear-gradient(to right, var(--color-border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
   background-size: 44px 44px;
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, var(--color-accent) 10%, var(--color-accent-2) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(100deg, var(--color-accent), var(--color-accent-2));
+}
+
+/* Gradient hairline border that fades in on hover. The element needs
+   `relative`; the pseudo-element is masked so only the 1px ring shows. */
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--color-accent), transparent 45%, var(--color-accent-2));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.glow-border:hover::before,
+.glow-border:focus-within::before,
+.glow-border-on::before {
+  opacity: 1;
+}
+
+/* Two soft, slowly drifting colour fields behind the hero. */
+.aurora {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 640px;
+  z-index: -10;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.55;
+}
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+}
+.aurora::before {
+  width: 46%;
+  height: 60%;
+  left: 8%;
+  top: 4%;
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 65%);
+  opacity: 0.35;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+.aurora::after {
+  width: 50%;
+  height: 70%;
+  right: 4%;
+  top: 0;
+  background: radial-gradient(circle, var(--color-accent-2) 0%, transparent 65%);
+  opacity: 0.45;
+  animation: aurora-drift 22s ease-in-out infinite alternate-reverse;
+}
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6%, 8%, 0) scale(1.12);
+  }
 }
 
 .text-glow {

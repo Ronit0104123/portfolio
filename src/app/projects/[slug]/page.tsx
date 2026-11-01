@@ -43,7 +43,8 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   return (
     <>
       <Nav home={false} />
-      <main id="top" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14 sm:py-20">
+      <main id="top" className="relative mx-auto w-full max-w-3xl flex-1 px-5 py-14 sm:py-20">
+        <div className="aurora opacity-30" aria-hidden="true" />
         <Link
           href="/#projects"
           className="inline-flex items-center gap-1.5 font-mono text-sm text-text-dim transition-colors hover:text-accent"
@@ -53,9 +54,9 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </Link>
 
         <header className="mt-8">
-          <p className="font-mono text-sm text-accent">{`// ${project.year}`}</p>
-          <h1 className="mt-2 font-mono text-4xl font-bold tracking-tight text-text sm:text-5xl">
-            {project.name}
+          <p className="text-gradient font-mono text-sm font-semibold">{`// ${project.year}`}</p>
+          <h1 className="mt-2 font-mono text-4xl font-bold tracking-tight sm:text-5xl">
+            <span className="text-gradient">{project.name}</span>
           </h1>
           <p className="mt-5 text-base leading-relaxed text-text-muted sm:text-lg">
             {project.description}
@@ -68,7 +69,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-2.5 font-medium text-bg transition-transform hover:-translate-y-0.5"
+                  className="bg-gradient-accent inline-flex items-center gap-1.5 rounded-md px-4 py-2.5 font-medium text-bg shadow-[0_8px_30px_-8px_var(--color-accent)] transition-all hover:-translate-y-0.5"
                 >
                   live site <ArrowUpRight size={15} />
                 </a>

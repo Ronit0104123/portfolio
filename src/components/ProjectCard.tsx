@@ -27,7 +27,7 @@ export function ProjectCard({
     <div
       ref={ref}
       onMouseMove={onMouseMove}
-      className={`group relative isolate flex h-full flex-col overflow-hidden rounded-lg border border-border bg-bg-raised/40 p-5 transition-all hover:-translate-y-1 hover:border-border-hover hover:bg-bg-raised ${
+      className={`glow-border group relative isolate flex h-full flex-col overflow-hidden rounded-lg border border-border bg-bg-raised/40 p-5 transition-all hover:-translate-y-1 hover:border-transparent hover:bg-bg-raised hover:shadow-[0_20px_60px_-30px_var(--color-accent-2)] ${
         large ? "sm:p-6" : ""
       }`}
     >
@@ -35,7 +35,7 @@ export function ProjectCard({
         className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--color-accent-soft), transparent 70%)",
+            "radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--color-accent-2-soft), transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -90,7 +90,7 @@ export function ProjectCard({
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded border border-border px-2 py-0.5 font-mono text-[11px] text-text-dim"
+              className="rounded border border-accent-2/20 bg-accent-2-soft px-2 py-0.5 font-mono text-[11px] text-accent-2"
             >
               {tag}
             </span>

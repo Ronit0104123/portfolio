@@ -18,12 +18,16 @@ export function Contact() {
       <SectionHeading index="05" title="contact" />
 
       <Reveal>
-        <div className="rounded-lg border border-border bg-bg-raised/40 p-8 text-center sm:p-12">
+        <div className="relative overflow-hidden rounded-lg border border-border bg-bg-raised/40 p-8 text-center sm:p-12">
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_80%_at_50%_0%,var(--color-accent-2-soft),transparent_70%)]"
+            aria-hidden="true"
+          />
           <p className="font-mono text-sm text-text-dim">
             $ echo &quot;let&apos;s build something&quot;
           </p>
           <h3 className="mt-3 text-2xl font-bold tracking-tight text-text sm:text-3xl">
-            Have a project, a role, or just want to say hi?
+            Have a project, a role, or just want to <span className="text-gradient">say hi</span>?
           </h3>
           <p className="mx-auto mt-3 max-w-md text-sm text-text-muted">
             My inbox is open. I try to reply to everyone — even if it takes a
