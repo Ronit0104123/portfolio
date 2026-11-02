@@ -73,7 +73,7 @@ export const projects: Project[] = [
     slug: "conversa",
     name: "Conversa",
     description:
-      "Multi-tenant RAG SaaS for lead generation. Paste a website URL and get an embeddable chatbot that answers visitors from your indexed content and captures leads. Crawled HTML, PDFs and DOCX go into pgvector, and the LangChain agent is covered by 12 unit tests against LLM failure modes.",
+      "Multi-tenant RAG SaaS for lead generation. Paste a website URL and get an embeddable chatbot that answers visitors from your indexed content and captures leads. Crawled HTML, PDFs and DOCX go into pgvector for retrieval.",
     tags: ["FastAPI", "Next.js", "LangChain", "pgvector", "Supabase"],
     year: "2026",
     github: "https://github.com/Ronit0104123/Conversa",
