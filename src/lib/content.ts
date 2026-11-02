@@ -7,11 +7,11 @@ export const profile = {
   handle: "ronit",
   role: "Forward Deployed Engineer",
   tagline:
-    "I build AI agents that hold real conversations: voice agents for banks and telcos at Gnani.ai, and RAG products on the side.",
+    "I build AI agents that hold real conversations: enterprise voice agents at Gnani.ai, and RAG products on the side.",
   location: "Bengaluru, India",
   availability: "Building voice agents @ Gnani.ai",
   bio: [
-    "I'm a Forward Deployed Engineer at Gnani.ai, building voice agents for BFSI and telecom clients like Airtel and L&T Finance, plus Gnani Agent Studio, the internal platform used to configure them. Before that I built AI agents at 100x and was a Google Summer of Code 2025 contributor to the Internet Health Report.",
+    "I'm a Forward Deployed Engineer at Gnani.ai, building conversational AI for enterprise use cases. Before that I built AI agents at 100x and was a Google Summer of Code 2025 contributor to the Internet Health Report.",
     "I graduated from BITS Pilani, Goa with a B.E. in Electronics & Instrumentation. On the side I ship AI products end to end (RAG chatbots, a startup-validation engine, a credit score for engineers) and write about AI, startups, and software for 4,000+ followers on LinkedIn.",
   ],
   resumeUrl: "/resume.pdf",
@@ -109,12 +109,10 @@ export const experience: ExperienceEntry[] = [
     period: "Jun 2026 — Present",
     location: "Bengaluru, India",
     bullets: [
-      "Built Gnani Agent Studio, an internal platform for configuring BFSI voice agents. A structured QA flow captures requirements and generates system prompts modularly, per product type (personal loan, vehicle loan) and call-flow scenario (PTP, third-party collections), optimized for KV caching.",
-      "Matches requirements with embedding retrieval plus LLM confirmation (Azure OpenAI GPT-4o), on a FastAPI/MongoDB + React/TanStack stack.",
-      "Developed voice agents for Airtel (collections, DTH) and L&T Finance, with multi-language support and optimized API integrations and call pipelines.",
+      "Developed enterprise voice agents with multi-language support.",
+      "Improved API integrations and call pipelines for conversational AI applications.",
       "Won 2nd prize among all FDEs in Gnani.ai's company-wide Agent Hackathon.",
     ],
-    tags: ["GPT-4o", "FastAPI", "MongoDB", "React", "TanStack"],
   },
   {
     org: "100x",
@@ -122,7 +120,7 @@ export const experience: ExperienceEntry[] = [
     period: "Aug 2025 — Dec 2025",
     location: "Bengaluru, India",
     bullets: [
-      "Built AI agents for candidate sourcing (TrueSearch), NetSuite workflows, and QA/UAT testing, cutting manual testing effort by 80%.",
+      "Built AI agents for candidate sourcing, NetSuite workflows, and QA/UAT testing, cutting manual testing effort by 80%.",
       "JavaScript-based automation, tuned for reliability over long-running executions.",
     ],
     tags: ["JavaScript", "AI Agents", "NetSuite"],
