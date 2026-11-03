@@ -42,7 +42,7 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "data & tools",
-    items: ["PostgreSQL", "Supabase", "Neo4j", "Firebase", "Git"],
+    items: ["PostgreSQL", "MongoDB", "Supabase", "Neo4j", "Firebase", "Git"],
   },
 ];
 
