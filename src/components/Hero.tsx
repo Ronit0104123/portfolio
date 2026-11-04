@@ -1,69 +1,87 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { profile } from "@/lib/content";
+import { profile, socials, facts } from "@/lib/content";
 import { TerminalFrame } from "./TerminalFrame";
 import { InteractiveTerminal } from "./InteractiveTerminal";
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export function Hero() {
+  const links = [
+    { label: "Résumé", href: profile.resumeUrl, external: true },
+    { label: "GitHub", href: socials.github, external: true },
+    { label: "LinkedIn", href: socials.linkedin, external: true },
+    { label: "Email", href: `mailto:${socials.email}`, external: false },
+  ];
+
   return (
-    <section
-      id="top"
-      className="relative mx-auto flex max-w-5xl flex-col gap-10 px-5 pt-16 pb-14 sm:pt-24 sm:pb-20 lg:flex-row lg:items-center lg:gap-8 lg:pt-28"
-    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[540px] bg-grid [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_40%,transparent_100%)]" />
-
+    <section id="top" className="mx-auto max-w-5xl px-5 pt-14 pb-16 sm:pt-24 sm:pb-24">
       <motion.div
-        initial={{ opacity: 0, y: 14 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="flex-1"
+        transition={{ duration: 0.7, ease }}
       >
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-bg-raised px-3 py-1 font-mono text-xs text-text-muted">
-          <span className="h-1.5 w-1.5 rounded-full bg-ok" />
-          {profile.availability}
-        </div>
-
-        <h1 className="font-mono text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-          {profile.name}
-        </h1>
-        <p className="mt-3 text-xl text-text-muted sm:text-2xl">
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-text-dim">
+          {profile.location}
+          <span className="mx-2 text-border-hover">/</span>
           {profile.role}
-          <span className="block text-text-dim sm:inline">
-            <span className="hidden sm:inline"> · </span>
-            {profile.location}
-          </span>
         </p>
-        <p className="mt-5 max-w-md text-base leading-relaxed text-text-muted">
+
+        <h1 className="mt-6 font-serif text-[clamp(3.5rem,14vw,7.5rem)] font-normal leading-[0.9] tracking-[-0.03em] text-text">
+          Ronit <span className="italic text-accent">Jain</span>
+        </h1>
+
+        <p className="mt-8 max-w-2xl font-serif text-[clamp(1.3rem,2.6vw,1.75rem)] leading-snug text-text-muted">
           {profile.tagline}
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-sm">
-          <a
-            href="#projects"
-            className="rounded-md bg-accent px-4 py-2.5 font-medium text-bg transition-transform hover:-translate-y-0.5"
-          >
-            view projects
-          </a>
-          <a
-            href="#contact"
-            className="rounded-md border border-border px-4 py-2.5 text-text transition-colors hover:border-border-hover hover:bg-bg-raised"
-          >
-            get in touch
-          </a>
-        </div>
+        <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          {links.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className="link text-text"
+              >
+                {link.label}
+                {link.external && <span className="ml-0.5 text-text-dim">↗</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full lg:max-w-md"
+      <motion.dl
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.2, ease }}
+        className="mt-14 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-border pt-6 md:grid-cols-4"
       >
-        <TerminalFrame title={`${profile.handle}@portfolio — zsh`}>
+        {facts.map((fact) => (
+          <div key={fact.label}>
+            <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+              {fact.label}
+            </dt>
+            <dd className="mt-1.5 text-sm leading-snug text-text">{fact.value}</dd>
+          </div>
+        ))}
+      </motion.dl>
+
+      <motion.figure
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.35, ease }}
+        className="mt-14"
+      >
+        <TerminalFrame title={`${profile.handle}@portfolio ~ zsh`}>
           <InteractiveTerminal />
         </TerminalFrame>
-      </motion.div>
+        <figcaption className="mt-3 font-mono text-[11px] text-text-dim">
+          A working terminal. Type a command, ask a question, or tap one below.
+        </figcaption>
+      </motion.figure>
     </section>
   );
 }

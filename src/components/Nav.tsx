@@ -9,7 +9,11 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      // Nothing is "current" while the hero is on screen.
+      if (window.scrollY < 300) setActive("");
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -43,28 +47,26 @@ export function Nav() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4 font-mono text-sm">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4 text-sm">
         <a
           href="#top"
-          className="flex items-center gap-1.5 text-text hover:text-accent transition-colors"
+          className="font-serif text-xl text-text transition-colors hover:text-accent"
         >
-          <span className="text-accent">~</span>
-          <span className="text-text-dim">/</span>
-          <span>{profile.handle}</span>
+          {profile.name}
         </a>
 
-        <ul className="hidden items-center gap-1 sm:flex">
+        <ul className="hidden items-center gap-6 sm:flex">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className={`rounded px-3 py-1.5 transition-colors ${
+                className={`capitalize transition-colors ${
                   active === item.href
-                    ? "text-accent bg-accent-soft"
-                    : "text-text-muted hover:text-text hover:bg-white/[0.04]"
+                    ? "text-accent"
+                    : "text-text-muted hover:text-text"
                 }`}
               >
-                ./{item.label}
+                {item.label}
               </a>
             </li>
           ))}
@@ -73,36 +75,33 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => window.dispatchEvent(new Event("toggle-command-palette"))}
-            className="hidden items-center gap-1.5 rounded border border-border px-2 py-1 text-xs text-text-dim transition-colors hover:border-border-hover hover:text-text sm:flex"
+            className="hidden font-mono text-xs text-text-dim transition-colors hover:text-text sm:block"
             aria-label="Open command palette"
           >
-            <span>search</span>
-            <kbd className="rounded border border-border bg-bg px-1 text-[10px]">
-              ⌘K
-            </kbd>
+            ⌘K
           </button>
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="sm:hidden text-text-muted hover:text-text"
+            className="text-text-muted hover:text-text sm:hidden"
             aria-label="Toggle menu"
             aria-expanded={open}
           >
-            {open ? "[x]" : "[menu]"}
+            {open ? "Close" : "Menu"}
           </button>
         </div>
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-border px-5 py-3 font-mono text-sm sm:hidden">
+        <ul className="flex flex-col border-t border-border px-5 py-2 sm:hidden">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded px-3 py-2 text-text-muted hover:bg-white/[0.04] hover:text-text"
+                className="block py-2.5 font-serif text-2xl capitalize text-text-muted hover:text-text"
               >
-                ./{item.label}
+                {item.label}
               </a>
             </li>
           ))}
@@ -112,9 +111,9 @@ export function Nav() {
                 setOpen(false);
                 window.dispatchEvent(new Event("toggle-command-palette"));
               }}
-              className="block w-full rounded px-3 py-2 text-left text-text-muted hover:bg-white/[0.04] hover:text-text"
+              className="block w-full py-2.5 text-left font-serif text-2xl text-text-muted hover:text-text"
             >
-              ./search
+              Search
             </button>
           </li>
         </ul>

@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #08090b;
-  --color-bg-raised: #101216;
-  --color-bg-hover: #16191f;
-  --color-border: #22252c;
-  --color-border-hover: #33373f;
-  --color-text: #e7e9ec;
-  --color-text-muted: #8c9099;
-  --color-text-dim: #5c6068;
-  --color-accent: #ffb454;
-  --color-accent-soft: #ffb45426;
+  --color-bg: #0d0c0a;
+  --color-bg-raised: #151411;
+  --color-bg-hover: #1c1a16;
+  --color-border: #282621;
+  --color-border-hover: #3d3a33;
+  --color-text: #ece7dc;
+  --color-text-muted: #a49e92;
+  --color-text-dim: #6f6a60;
+  --color-accent: #f0643a;
+  --color-accent-soft: #f0643a26;
   --color-accent-2: #7dd3c0;
-  --color-ok: #7ee787;
+  --color-ok: #8fcf86;
   --color-err: #ff6b6b;
 
   --font-mono: var(--font-jetbrains-mono);
   --font-sans: var(--font-plex-sans);
+  --font-serif: var(--font-newsreader);
 }
 
 @theme inline {
@@ -35,6 +36,7 @@
   --color-err: var(--color-err);
   --font-mono: var(--font-mono);
   --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
 * {
@@ -54,7 +56,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: #08090b;
+  color: #0d0c0a;
 }
 
 ::-webkit-scrollbar {
@@ -71,26 +73,17 @@ body {
   background: var(--color-text-dim);
 }
 
-/* film-grain style noise, kept very subtle so it reads as texture, not a filter */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.045;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+/* hairline link underline that thickens on hover, used for text links */
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-hover);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.15s, text-decoration-color 0.15s;
 }
-
-.bg-grid {
-  background-image:
-    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
-  background-size: 44px 44px;
-}
-
-.text-glow {
-  text-shadow: 0 0 24px var(--color-accent-soft);
+.link:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
 }
 
 @keyframes caret-blink {
